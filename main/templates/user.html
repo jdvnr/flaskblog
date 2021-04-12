@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>{{user.username}}'s Page</h1>
+    {% if posts %}
+        {% for post in posts %}
+            <article class="media content-section">
+              <div class="media-body">
+                <div class="article-metadata">
+                  <a class="mr-2" href="/user/{{post.author}}">{{ post.author }}</a>
+                  <small class="text-muted">{{ post.date_posted }}</small>
+                </div>
+                <h2><a class="article-title" href="/post/{{post.pidx}}">{{ post.title }}</a></h2>
+                <p class="article-content">{{ post.content }}</p>
+              </div>
+            </article>
+        {% endfor %}
+    {% else %}
+        <p>{{user.username}} has not posted so far!</p>
+    {% endif %}
+{% endblock content %}

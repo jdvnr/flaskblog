@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+  {% for p in post %}
+    {% if p['pidx'] == idx %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{{url_for('userprofile', username=p.author)}}">{{ p.author }}</a>
+              <small class="text-muted">{{ p.date_posted }}</small>
+            </div>
+            <h2><a class="article-title">{{ p.title }}</a></h2>
+            <p class="article-content">{{ p.content }}</p>
+          </div>
+        </article>
+    {% endif %}
+  {% endfor %}
+{% endblock content %}
